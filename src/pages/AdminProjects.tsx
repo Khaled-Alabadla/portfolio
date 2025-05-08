@@ -1,0 +1,259 @@
+
+import React, { useState } from 'react';
+import Layout from '@/components/Layout';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
+import { Card, CardContent } from '@/components/ui/card';
+import { projects, Project } from '@/data/projects';
+import { Link } from 'react-router-dom';
+import { toast } from '@/hooks/use-toast';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+
+const AdminProjects = () => {
+  const [projectsList, setProjectsList] = useState(projects);
+  const [isAdding, setIsAdding] = useState(false);
+  const [isEditing, setIsEditing] = useState<string | null>(null);
+  const [formData, setFormData] = useState<Project>({
+    id: '',
+    title: '',
+    description: '',
+    image: '',
+    tags: [],
+    demoUrl: '',
+    repoUrl: '',
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: name === 'tags' ? value.split(',').map(tag => tag.trim()) : value
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (isEditing) {
+      // Update existing project
+      const updatedProjects = projectsList.map(project => 
+        project.id === isEditing ? { ...formData } : project
+      );
+      setProjectsList(updatedProjects);
+      toast({
+        title: "Project Updated",
+        description: "The project has been successfully updated.",
+      });
+      setIsEditing(null);
+    } else {
+      // Create new project
+      const newId = (Math.max(...projectsList.map(p => parseInt(p.id))) + 1).toString();
+      const newProject = {
+        ...formData,
+        id: newId
+      };
+      setProjectsList([...projectsList, newProject]);
+      toast({
+        title: "Project Created",
+        description: "A new project has been created.",
+      });
+    }
+
+    // Reset form
+    setFormData({
+      id: '',
+      title: '',
+      description: '',
+      image: '',
+      tags: [],
+      demoUrl: '',
+      repoUrl: '',
+    });
+    setIsAdding(false);
+  };
+
+  const handleEditClick = (project: Project) => {
+    setFormData({
+      ...project,
+      tags: [...project.tags] // Create a copy to avoid mutating the original
+    });
+    setIsEditing(project.id);
+    setIsAdding(true);
+  };
+
+  const handleDeleteClick = (id: string) => {
+    const updatedProjects = projectsList.filter(project => project.id !== id);
+    setProjectsList(updatedProjects);
+    toast({
+      title: "Project Deleted",
+      description: "The project has been successfully deleted.",
+      variant: "destructive"
+    });
+  };
+
+  return (
+    <Layout>
+      <section className="py-20">
+        <div className="container">
+          <div className="mb-8 flex justify-between items-center">
+            <h1 className="text-3xl font-serif font-semibold">Manage Projects</h1>
+            <div className="flex gap-4">
+              <Button onClick={() => setIsAdding(true)}>Add New Project</Button>
+              <Button variant="outline" asChild>
+                <Link to="/admin">Back to Dashboard</Link>
+              </Button>
+            </div>
+          </div>
+
+          {isAdding ? (
+            <Card>
+              <CardContent className="pt-6">
+                <form onSubmit={handleSubmit}>
+                  <div className="space-y-4">
+                    <div>
+                      <Label htmlFor="title">Project Title</Label>
+                      <Input 
+                        id="title" 
+                        name="title" 
+                        value={formData.title} 
+                        onChange={handleInputChange} 
+                        required 
+                      />
+                    </div>
+
+                    <div>
+                      <Label htmlFor="image">Project Image URL</Label>
+                      <Input 
+                        id="image" 
+                        name="image" 
+                        value={formData.image} 
+                        onChange={handleInputChange} 
+                        required 
+                      />
+                    </div>
+
+                    <div>
+                      <Label htmlFor="description">Description</Label>
+                      <Textarea 
+                        id="description" 
+                        name="description" 
+                        value={formData.description} 
+                        onChange={handleInputChange} 
+                        required 
+                      />
+                    </div>
+
+                    <div>
+                      <Label htmlFor="tags">Tags (comma separated)</Label>
+                      <Input 
+                        id="tags" 
+                        name="tags" 
+                        value={formData.tags.join(', ')} 
+                        onChange={handleInputChange} 
+                        required 
+                      />
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <Label htmlFor="demoUrl">Demo URL</Label>
+                        <Input 
+                          id="demoUrl" 
+                          name="demoUrl" 
+                          value={formData.demoUrl || ''} 
+                          onChange={handleInputChange} 
+                        />
+                      </div>
+                      <div>
+                        <Label htmlFor="repoUrl">Repository URL</Label>
+                        <Input 
+                          id="repoUrl" 
+                          name="repoUrl" 
+                          value={formData.repoUrl || ''} 
+                          onChange={handleInputChange} 
+                        />
+                      </div>
+                    </div>
+
+                    <div className="flex justify-end gap-2">
+                      <Button 
+                        type="button" 
+                        variant="outline" 
+                        onClick={() => {
+                          setIsAdding(false);
+                          setIsEditing(null);
+                        }}
+                      >
+                        Cancel
+                      </Button>
+                      <Button type="submit">
+                        {isEditing ? 'Update Project' : 'Create Project'}
+                      </Button>
+                    </div>
+                  </div>
+                </form>
+              </CardContent>
+            </Card>
+          ) : (
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Title</TableHead>
+                  <TableHead>Tags</TableHead>
+                  <TableHead className="w-[150px]">Actions</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {projectsList.length === 0 ? (
+                  <TableRow>
+                    <TableCell colSpan={3} className="text-center">No projects found</TableCell>
+                  </TableRow>
+                ) : (
+                  projectsList.map((project) => (
+                    <TableRow key={project.id}>
+                      <TableCell>{project.title}</TableCell>
+                      <TableCell>
+                        <div className="flex flex-wrap gap-1">
+                          {project.tags.map((tag, idx) => (
+                            <span 
+                              key={idx} 
+                              className="bg-secondary text-secondary-foreground text-xs px-2 py-1 rounded-full"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </TableCell>
+                      <TableCell>
+                        <div className="flex gap-2">
+                          <Button 
+                            variant="outline" 
+                            size="sm" 
+                            onClick={() => handleEditClick(project)}
+                          >
+                            Edit
+                          </Button>
+                          <Button 
+                            variant="destructive" 
+                            size="sm" 
+                            onClick={() => handleDeleteClick(project.id)}
+                          >
+                            Delete
+                          </Button>
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                  ))
+                )}
+              </TableBody>
+            </Table>
+          )}
+        </div>
+      </section>
+    </Layout>
+  );
+};
+
+export default AdminProjects;
