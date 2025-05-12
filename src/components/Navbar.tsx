@@ -1,16 +1,18 @@
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { useLanguage } from '@/contexts/LanguageContext';
+import LanguageSwitcher from './LanguageSwitcher';
 
 const Navbar = () => {
   const location = useLocation();
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [isScrolled, setIsScrolled] = React.useState(false);
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const { t, language } = useLanguage();
 
-  useEffect(() => {
+  React.useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 10) {
         setIsScrolled(true);
@@ -19,11 +21,6 @@ const Navbar = () => {
       }
     };
 
-    // Check if user is admin
-    const username = localStorage.getItem('admin-username');
-    const password = localStorage.getItem('admin-password');
-    setIsAdmin(username === 'khaled-esam' && password === 'admin-pass');
-
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
@@ -31,17 +28,15 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'About', path: '/about' },
-    { name: 'Projects', path: '/projects' },
-    { name: 'Blog', path: '/blog' },
-    { name: 'Contact', path: '/contact' },
+    { name: t('home'), path: '/' },
+    { name: t('about'), path: '/about' },
+    { name: t('projects'), path: '/projects' },
+    { name: t('blog'), path: '/blog' },
+    { name: t('contact'), path: '/contact' },
   ];
-  
-  // Only add the admin link if the user is admin
-  if (isAdmin) {
-    navLinks.push({ name: 'Admin', path: '/khaled-esam/dash/admin' });
-  }
+
+  // Admin link is not shown in the navigation anymore
+  // It's only accessible via direct URL
 
   return (
     <nav
@@ -54,7 +49,7 @@ const Navbar = () => {
     >
       <div className="container flex items-center justify-between">
         <Link to="/" className="flex items-center">
-          <h1 className="text-xl font-bold font-serif text-primary">Khaled Esam</h1>
+          <h1 className={`text-xl font-bold font-serif text-primary ${language === 'ar' ? 'font-arabic' : ''}`}>Khaled Esam</h1>
         </Link>
 
         <div className="hidden md:flex items-center space-x-8">
@@ -72,6 +67,7 @@ const Navbar = () => {
               {link.name}
             </Link>
           ))}
+          <LanguageSwitcher />
         </div>
 
         <div className="md:hidden">
@@ -131,6 +127,9 @@ const Navbar = () => {
                 {link.name}
               </Link>
             ))}
+            <div className="pt-2">
+              <LanguageSwitcher />
+            </div>
           </div>
         </div>
       )}
