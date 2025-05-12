@@ -16,7 +16,7 @@ export const translations = {
 
     // Hero section
     heroTitle: "Hello, I'm ",
-    heroName: "Khaled Esam",
+    heroName: " Khaled Esam",
     heroDesc:
       "A software engineer who builds meaningful solutions — from dynamic web apps and e-commerce stores to custom business systems.",
     viewWork: "View My Work",
@@ -159,7 +159,7 @@ export const translations = {
 
     // Hero section
     heroTitle: " مرحبا، أنا",
-    heroName: "خالد عصام",
+    heroName: " خالد عصام",
     heroDesc:
       "مهندس برمجيات | مطور الواجهات الخلفية باستخدام PHP Laravel | مطور الواجهات الأمامية باستخدام Vue.js",
     viewWork: "عرض أعمالي",
@@ -177,7 +177,7 @@ export const translations = {
 
     // Skills section
     mySkills: "مهاراتي",
-    skillsDesc: ".إليك بعض المهارات التي اكتسبتها خلال سنوات العمل",
+    skillsDesc: "إليك بعض المهارات التي اكتسبتها خلال سنوات العمل.",
 
     // Blog
     readMore: "قراءة المزيد",
@@ -195,7 +195,7 @@ export const translations = {
     projectsDescription: "عرض لأعمالي ومشاريعي الشخصية ومساهماتي.",
     featuredProjects: "مشاريع مميزة",
     projectsDesc:
-      "هنا بعض من مشاريعي الحديثة، والتي اكتسبت من خلالها خبرات متنوعة",
+      "هنا بعض من مشاريعي الحديثة، والتي اكتسبت من خلالها خبرات متنوعة.",
     viewProject: "عرض المشروع",
     viewCode: "عرض الكود",
     viewAllProjects: "عرض كل المشاريع",
