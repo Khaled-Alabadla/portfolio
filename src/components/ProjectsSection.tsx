@@ -1,56 +1,85 @@
-
-import React from 'react';
-import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Link } from 'react-router-dom';
-import { useData } from '@/contexts/DataContext';
-import { useLanguage } from '@/contexts/LanguageContext';
+import React from "react";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Link } from "react-router-dom";
+import { useData } from "@/contexts/DataContext";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const ProjectCard = ({ project }) => {
   const { language } = useLanguage();
-  
+
   // Use localized content based on the selected language
-  const title = language === 'ar' && project.title_ar ? project.title_ar : project.title;
-  const description = language === 'ar' && project.description_ar ? project.description_ar : project.description;
-  const tags = language === 'ar' && project.tags_ar ? project.tags_ar : project.tags;
-  
+  const title =
+    language === "ar" && project.title_ar ? project.title_ar : project.title;
+  const description =
+    language === "ar" && project.description_ar
+      ? project.description_ar
+      : project.description;
+  const tags =
+    language === "ar" && project.tags_ar ? project.tags_ar : project.tags;
+
   return (
     <Card className="overflow-hidden h-full flex flex-col">
       <div className="aspect-video overflow-hidden">
-        <img 
+        <img
           src={`${project.image}?auto=format&fit=crop&w=600&h=350`}
           alt={title}
           className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
         />
       </div>
       <CardHeader>
-        <h3 className={`text-xl font-serif font-semibold ${language === 'ar' ? 'font-arabic' : ''}`}>
+        <h3
+          className={`text-xl font-serif font-semibold ${
+            language === "ar" ? "font-arabic" : ""
+          }`}
+        >
           {title}
         </h3>
       </CardHeader>
       <CardContent className="flex-grow">
-        <p className={`text-muted-foreground mb-4 ${language === 'ar' ? 'font-arabic' : ''}`}>
+        <p
+          className={`text-muted-foreground mb-4 ${
+            language === "ar" ? "font-arabic" : ""
+          }`}
+        >
           {description}
         </p>
         <div className="flex flex-wrap gap-2">
           {tags.map((tag, index) => (
-            <Badge key={index} variant="secondary">{tag}</Badge>
+            <Badge key={index} variant="secondary">
+              {tag}
+            </Badge>
           ))}
         </div>
       </CardContent>
       <CardFooter className="flex gap-3">
         {project.demoUrl && (
           <Button size="sm" variant="default" asChild>
-            <a href={project.demoUrl} target="_blank" rel="noreferrer" className={language === 'ar' ? 'font-arabic' : ''}>
-              {language === 'ar' ? 'عرض العرض التوضيحي' : 'View Demo'}
+            <a
+              href={project.demoUrl}
+              target="_blank"
+              rel="noreferrer"
+              className={language === "ar" ? "font-arabic" : ""}
+            >
+              {language === "ar" ? "الانتقال إلى الموقع" : "View Demo"}
             </a>
           </Button>
         )}
         {project.repoUrl && (
           <Button size="sm" variant="outline" asChild>
-            <a href={project.repoUrl} target="_blank" rel="noreferrer" className={language === 'ar' ? 'font-arabic' : ''}>
-              {language === 'ar' ? 'عرض الشيفرة' : 'View Code'}
+            <a
+              href={project.repoUrl}
+              target="_blank"
+              rel="noreferrer"
+              className={language === "ar" ? "font-arabic" : ""}
+            >
+              {language === "ar" ? "عرض الكود" : "View Code"}
             </a>
           </Button>
         )}
@@ -63,16 +92,24 @@ const ProjectsSection = ({ limit = 0 }) => {
   const { projects } = useData();
   const { t, language } = useLanguage();
   const displayProjects = limit > 0 ? projects.slice(0, limit) : projects;
-  
+
   return (
     <section className="py-16">
       <div className="container">
         <div className="max-w-3xl mx-auto mb-12 text-center">
-          <h2 className={`text-3xl font-serif font-semibold mb-4 ${language === 'ar' ? 'font-arabic' : ''}`}>
-            {limit > 0 ? t('featuredProjects') : t('myProjects')}
+          <h2
+            className={`text-3xl font-serif font-semibold mb-4 ${
+              language === "ar" ? "font-arabic" : ""
+            }`}
+          >
+            {limit > 0 ? t("featuredProjects") : t("myProjects")}
           </h2>
-          <p className={`text-muted-foreground ${language === 'ar' ? 'font-arabic' : ''}`}>
-            {t('projectsDesc')}
+          <p
+            className={`text-muted-foreground ${
+              language === "ar" ? "font-arabic" : ""
+            }`}
+          >
+            {t("projectsDesc")}
           </p>
         </div>
 
@@ -85,8 +122,11 @@ const ProjectsSection = ({ limit = 0 }) => {
         {limit > 0 && projects.length > limit && (
           <div className="mt-12 text-center">
             <Button asChild>
-              <Link to="/projects" className={language === 'ar' ? 'font-arabic' : ''}>
-                {t('viewAllProjects')}
+              <Link
+                to="/projects"
+                className={language === "ar" ? "font-arabic" : ""}
+              >
+                {t("viewAllProjects")}
               </Link>
             </Button>
           </div>
