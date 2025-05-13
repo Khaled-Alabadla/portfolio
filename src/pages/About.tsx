@@ -113,17 +113,17 @@ const About = () => {
               <CardContent className="pt-6">
                 <div className="flex flex-col md:flex-row justify-between mb-2">
                   <h3 className="text-xl font-serif font-semibold">
-                    {t(educationDegree)}
+                    {t("educationDegree")}
                   </h3>
                   <p className="text-sm text-muted-foreground">
                     {" "}
-                    {t(educationDate)}
+                    {t("educationDate")}
                   </p>
                 </div>
                 <p className="text-muted-foreground">
-                  {t(educationUniversity)}
+                  {t("educationUniversity")}
                 </p>
-                <p>{t(educationGPA)}</p>
+                <p>{t("educationGPA")}</p>
               </CardContent>
             </Card>
           </div>
