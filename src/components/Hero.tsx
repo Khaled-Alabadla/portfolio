@@ -14,10 +14,7 @@ const Hero = () => {
         <div className="max-w-4xl mx-auto text-center">
           <div className="flex justify-center mb-8">
             <Avatar className="h-40 w-40 border-4 border-primary/20 shadow-lg">
-              <AvatarImage
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&h=600"
-                alt="Khaled"
-              />
+              <AvatarImage src="../bg.jpg" alt="Khaled" />
               <AvatarFallback className="text-4xl">KE</AvatarFallback>
             </Avatar>
           </div>
@@ -26,7 +23,7 @@ const Hero = () => {
               language === "ar" ? "font-arabic" : ""
             }`}
           >
-            <span className="inline-block">{t("heroTitle")} </span>
+            <span className="inline-block">{t("heroTitle") + " "} </span>
             <span className="text-primary inline-block">{t("heroName")}</span>
           </h1>
           <p

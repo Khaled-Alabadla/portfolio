@@ -7,6 +7,7 @@ export type Language = "en" | "ar";
 export const translations = {
   en: {
     // Navigation
+    title: "Khaled Esam - Personal Portfolio & Blog",
     home: "Home",
     about: "About",
     projects: "Projects",
@@ -26,6 +27,43 @@ export const translations = {
     aboutMe: "About Me",
     aboutDesc:
       "A clear look at my journey, experience, and the passion that drives every line of code.",
+
+    role1Title: "PHP Laravel Developer",
+    role1Date: "2021 - Now",
+    role1Company: "Freelancing",
+    role1Item1:
+      "Lead the development of multiple web applications using PHP and Laravel",
+    role1Item2:
+      "Implement and maintain RESTful APIs for various client projects",
+    role1Item3: "Working on many freelancing projects for various clients",
+
+    role2Title: "Field Training",
+    role2Date: "2024 - 2025",
+    role2Company: "Al-Qarara Municipality",
+    role2tem1:
+      "Successfully completed a practical training at Al-Qarara Municipality",
+    role2tem2:
+      "Designed and developed a comprehensive aid management system tailored to the municipality's needs",
+    role2Item3:
+      "The system was officially adopted and implemented, streamlining aid distribution and improving service efficiency",
+    role2Item4:
+      "Earned recognition from the municipality for delivering a high-quality and impactful solution",
+
+    role3Title: "Database Management Training",
+    role3Date: "2024 - 2025",
+    role3Company: "Gaza Sky Geeks (GSG)",
+    role3Item1:
+      "Completed Database Engineering training with hands-on experience",
+    role3Item2:
+      "Gained solid skills in database design, normalization, and schema structuring",
+    role3Item3:
+      "Practiced query optimization techniques for enhanced performance",
+
+    educationDegree: "Bachelor of Science in Software Engineering",
+    educationDate: "2020 - 2025",
+    educationUniversity: "University of Palestine - Palestine",
+    educationGPA: "93.66%",
+
     myStory: "My Story",
     workExperience: "Work Experience",
     aboutContent:
@@ -150,6 +188,7 @@ export const translations = {
   },
   ar: {
     // Navigation
+    title: "خالد عصام - الملف الشخصي",
     home: "الرئيسية",
     about: "من أنا؟",
     projects: "المشاريع",
@@ -158,12 +197,43 @@ export const translations = {
     admin: "إدارة",
 
     // Hero section
-    heroTitle: " مرحبا، أنا",
+    heroTitle: " السلام عليكم، أنا",
     heroName: " خالد عصام",
     heroDesc:
       "مهندس برمجيات | مطور الواجهات الخلفية باستخدام PHP Laravel | مطور الواجهات الأمامية باستخدام Vue.js",
     viewWork: "عرض أعمالي",
     getInTouch: "تواصل معي",
+
+    role1Title: "مطور PHP Laravel",
+    role1Date: "2021 - الآن",
+    role1Company: "العمل الحر",
+    role1Item1:
+      "تطوير وإدارة العديد من المشاريع باستخدام إطار العمل PHP Laravel",
+    role1Item2:
+      "برمجة وصيانة RESTful APIs لمطوري الواحهات الأمامية وتطبيقات الموبايل",
+    role1Item3:
+      "إنجاز العديد من المشاريع لعملاء من مختلف الجنسيات على مواقع العمل الحر",
+
+    role2Title: "تدريب ميداني",
+    role2Date: "2024 - 2025",
+    role2Company: "بلدية القرارة",
+    role2tem1:
+      "إتمام التدريب الميداني بنجاح في بلدية القرارة وإنجاز المهمة المطلوبة على أكمل وجه",
+    role2tem2:
+      "تصميم وتطوير نظام إدارة المساعدات لموظفي البلدية بشكل كامل يتناسب مع احتياجات البلدية",
+    role2Item3:
+      "تم اعتماد النظام رسميًا وتنفيذه، مما أدى إلى تسريع توزيع المساعدات وتحسين كفاءة الخدمة",
+    role2Item4:
+      "حصلت بحمد الله على تقدير من البلدية وإشادة من قبل الإدارة والموظفين على المشروع المنجز",
+
+    role3Title: "تدريب إلكتروني في مجال إدارة قواعد البيانات",
+    role3Date: "2024 - 2025",
+    role3Company: "Gaza Sky Geeks (GSG)",
+    role3Item1: "إتمام دورة تدريبية في هندسة قواعد البيانات مع الخبرة العملية",
+    role3Item2:
+      "اكتساب مهارات قيمة قي مجال إدارة وتصميم قواهد البيانات، تسهم في بناء قواهد بيانات آمنة وقابلة للتوسع",
+    role3Item3:
+      "التدريب والتركيز بشكل كبير على صياغة الاستعلامات بأفضل الطرق لتحسين الأداء",
 
     // About page
     aboutMe: "من هو خالد؟",
@@ -174,6 +244,11 @@ export const translations = {
 
     workExperience: "الخبرة العملية",
     education: "التعليم",
+
+    educationDegree: "درجة البكالوريوس في هندسة البرمجيات",
+    educationDate: "2020 - 2025",
+    educationUniversity: "جامعة فلسطين - فلسطين",
+    educationGPA: "93.66%",
 
     // Skills section
     mySkills: "مهاراتي",
