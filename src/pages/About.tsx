@@ -5,7 +5,6 @@ import SkillsSection from "@/components/SkillsSection";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const About = () => {
-  const { t } = useLanguage();
   const { language } = useLanguage();
 
   return (
