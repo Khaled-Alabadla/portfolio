@@ -44,19 +44,19 @@ const About = () => {
                 <CardContent className="pt-6">
                   <div className="flex flex-col md:flex-row justify-between mb-2">
                     <h3 className="text-xl font-serif font-semibold">
-                      {t(role1Title)}
+                      {t("role1Title")}
                     </h3>
                     <p className="text-sm text-muted-foreground">
-                      {t(role1Date)}
+                      {t("role1Date")}
                     </p>
                   </div>
                   <p className="text-muted-foreground mb-2">
-                    {t(role1Company)}
+                    {t("role1Company")}
                   </p>
                   <ul className="list-disc list-inside text-muted-foreground space-y-1 ml-4">
-                    <li>{t(role1Item1)}</li>
-                    <li>{t(role1Item2)}</li>
-                    <li>{t(role1Item3)}</li>
+                    <li>{t("role1Item1")}</li>
+                    <li>{t("role1Item2")}</li>
+                    <li>{t("role1Item3")}</li>
                   </ul>
                 </CardContent>
               </Card>
@@ -65,20 +65,20 @@ const About = () => {
                 <CardContent className="pt-6">
                   <div className="flex flex-col md:flex-row justify-between mb-2">
                     <h3 className="text-xl font-serif font-semibold">
-                      {t(role2Title)}
+                      {t("role2Title")}
                     </h3>
                     <p className="text-sm text-muted-foreground">
-                      {t(role2Date)}
+                      {t("role2Date")}
                     </p>
                   </div>
                   <p className="text-muted-foreground mb-2">
-                    {t(role2Company)}
+                    {t("role2Company")}
                   </p>
                   <ul className="list-disc list-inside text-muted-foreground space-y-1 ml-4">
-                    <li>{t(role2Item1)}</li>
-                    <li>{t(role2Item2)}</li>
-                    <li>{t(role2Item3)}</li>
-                    <li>{t(role2Item4)}</li>
+                    <li>{t("role2Item1")}</li>
+                    <li>{t("role2Item2")}</li>
+                    <li>{t("role2Item3")}</li>
+                    <li>{t("role2Item4")}</li>
                   </ul>
                 </CardContent>
               </Card>
@@ -86,19 +86,19 @@ const About = () => {
                 <CardContent className="pt-6">
                   <div className="flex flex-col md:flex-row justify-between mb-2">
                     <h3 className="text-xl font-serif font-semibold">
-                      {t(role3Title)}
+                      {t("role3Title")}
                     </h3>
                     <p className="text-sm text-muted-foreground">
-                      {t(role3Date)}
+                      {t("role3Date")}
                     </p>
                   </div>
                   <p className="text-muted-foreground mb-2">
-                    {t(role3Company)}
+                    {t("role3Company")}
                   </p>
                   <ul className="list-disc list-inside text-muted-foreground space-y-1 ml-4">
-                    <li>{t(role3Item1)}</li>
-                    <li>{t(role3Item2)}</li>
-                    <li>{t(role3Item3)}</li>
+                    <li>{t("role3Item1")}</li>
+                    <li>{t("role3Item2")}</li>
+                    <li>{t("role3Item3")}</li>
                   </ul>
                 </CardContent>
               </Card>
