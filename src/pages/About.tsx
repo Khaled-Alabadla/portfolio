@@ -154,7 +154,7 @@ const About = () => {
                 <p className="text-muted-foreground">
                   {t("educationUniversity")}
                 </p>
-                <p style="margin-top: 10px">{t("educationGPA")}</p>
+                <p style={{ marginTop: "10px" }}>{t("educationGPA")}</p>
               </CardContent>
             </Card>
           </div>
