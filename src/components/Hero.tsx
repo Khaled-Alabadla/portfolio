@@ -23,7 +23,7 @@ const Hero = () => {
               language === "ar" ? "font-arabic" : ""
             }`}
           >
-            <span className="inline-block">{t("heroTitle") + " "} </span>
+            <span className="inline-block">{t("heroTitle")}&nbsp; </span>
             <span className="text-primary inline-block">{t("heroName")}</span>
           </h1>
           <p
