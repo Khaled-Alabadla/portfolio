@@ -40,9 +40,9 @@ export const translations = {
     role2Title: "Field Training",
     role2Date: "2024 - 2025",
     role2Company: "Al-Qarara Municipality",
-    role2tem1:
+    role2Item1:
       "Successfully completed a practical training at Al-Qarara Municipality",
-    role2tem2:
+    role2Item2:
       "Designed and developed a comprehensive aid management system tailored to the municipality's needs",
     role2Item3:
       "The system was officially adopted and implemented, streamlining aid distribution and improving service efficiency",

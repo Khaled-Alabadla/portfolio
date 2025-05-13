@@ -12,7 +12,11 @@ const About = () => {
       <section className="py-20">
         <div className="container">
           <div className="max-w-3xl mx-auto mb-16 text-center">
-            <h1 className="text-4xl font-serif font-semibold mb-4">
+            <h1
+              className={`text-4xl font-serif font-semibold mb-4${
+                language === "ar" ? "font-arabic" : ""
+              }`}
+            >
               {t("aboutMe")}
             </h1>
             <p className="text-xl text-muted-foreground">{t("aboutDesc")}</p>
@@ -28,7 +32,11 @@ const About = () => {
             </div>
 
             <div className="md:col-span-2">
-              <h2 className="text-2xl font-serif font-semibold mb-4">
+              <h2
+                className={`text-2xl font-serif font-semibold mb-4 ${
+                  language === "ar" ? "font-arabic" : ""
+                }`}
+              >
                 {t("myStory")}
               </h2>
               <p className="text-muted-foreground mb-4">{t("aboutContent")}</p>
@@ -36,14 +44,22 @@ const About = () => {
           </div>
 
           <div className="mb-16">
-            <h2 className="text-2xl font-serif font-semibold text-center mb-8">
+            <h2
+              className={`text-2xl font-serif font-semibold text-center mb-8 ${
+                language === "ar" ? "font-arabic" : ""
+              }`}
+            >
               {t("workExperience")}
             </h2>
             <div className="space-y-6">
               <Card>
                 <CardContent className="pt-6">
                   <div className="flex flex-col md:flex-row justify-between mb-2">
-                    <h3 className="text-xl font-serif font-semibold">
+                    <h3
+                      className={`text-xl font-serif font-semibold ${
+                        language === "ar" ? "font-arabic" : ""
+                      }`}
+                    >
                       {t("role1Title")}
                     </h3>
                     <p className="text-sm text-muted-foreground">
@@ -64,7 +80,11 @@ const About = () => {
               <Card>
                 <CardContent className="pt-6">
                   <div className="flex flex-col md:flex-row justify-between mb-2">
-                    <h3 className="text-xl font-serif font-semibold">
+                    <h3
+                      className={`text-xl font-serif font-semibold ${
+                        language === "ar" ? "font-arabic" : ""
+                      }`}
+                    >
                       {t("role2Title")}
                     </h3>
                     <p className="text-sm text-muted-foreground">
@@ -85,7 +105,11 @@ const About = () => {
               <Card>
                 <CardContent className="pt-6">
                   <div className="flex flex-col md:flex-row justify-between mb-2">
-                    <h3 className="text-xl font-serif font-semibold">
+                    <h3
+                      className={`text-xl font-serif font-semibold ${
+                        language === "ar" ? "font-arabic" : ""
+                      }`}
+                    >
                       {t("role3Title")}
                     </h3>
                     <p className="text-sm text-muted-foreground">
@@ -106,7 +130,11 @@ const About = () => {
           </div>
 
           <div className="mb-16">
-            <h2 className="text-2xl font-serif font-semibold text-center mb-8">
+            <h2
+              className={`text-2xl font-serif font-semibold text-center mb-8 ${
+                language === "ar" ? "font-arabic" : ""
+              }`}
+            >
               {t("education")}
             </h2>
             <Card>
@@ -115,15 +143,18 @@ const About = () => {
                   <h3 className="text-xl font-serif font-semibold">
                     {t("educationDegree")}
                   </h3>
-                  <p className="text-sm text-muted-foreground">
-                    {" "}
+                  <p
+                    className={`text-sm text-muted-foreground ${
+                      language === "ar" ? "font-arabic" : ""
+                    }`}
+                  >
                     {t("educationDate")}
                   </p>
                 </div>
                 <p className="text-muted-foreground">
                   {t("educationUniversity")}
                 </p>
-                <p>{t("educationGPA")}</p>
+                <p style="margin-top: 10px">{t("educationGPA")}</p>
               </CardContent>
             </Card>
           </div>
