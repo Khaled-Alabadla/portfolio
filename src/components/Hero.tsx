@@ -14,7 +14,7 @@ const Hero = () => {
         <div className="max-w-4xl mx-auto text-center">
           <div className="flex justify-center mb-8">
             <Avatar className="h-40 w-40 border-4 border-primary/20 shadow-lg">
-              <AvatarImage src="../bg.jpg" alt="Khaled" />
+              <AvatarImage src="/bg.jpg" alt="Khaled" />
               <AvatarFallback className="text-4xl">KE</AvatarFallback>
             </Avatar>
           </div>

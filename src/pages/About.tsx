@@ -6,6 +6,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 
 const About = () => {
   const { t } = useLanguage();
+  const { language } = useLanguage();
 
   return (
     <Layout>
@@ -25,7 +26,7 @@ const About = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
             <div className="md:col-span-1">
               <img
-                src="../bg.jpg"
+                src="/bg.jpg"
                 alt="Profile"
                 className="rounded-lg w-full h-auto object-cover shadow-md"
               />
