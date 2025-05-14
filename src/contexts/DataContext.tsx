@@ -1,8 +1,7 @@
-
-import React, { createContext, useContext, useState, useEffect } from 'react';
-import { blogPosts, BlogPost } from '@/data/blog';
-import { projects, Project } from '@/data/projects';
-import { skillCategories, SkillCategory } from '@/data/skills';
+import React, { createContext, useContext, useState, useEffect } from "react";
+import { blogPosts as defaultBlogs, BlogPost } from "@/data/blog";
+import { projects as defaultProjects, Project } from "@/data/projects";
+import { skillCategories as defaultSkills, SkillCategory } from "@/data/skills";
 
 interface DataContextType {
   blogs: BlogPost[];
@@ -16,27 +15,34 @@ interface DataContextType {
 const DataContext = createContext<DataContextType | undefined>(undefined);
 
 export const DataProvider = ({ children }: { children: React.ReactNode }) => {
-  const [blogs, setBlogs] = useState<BlogPost[]>(blogPosts);
-  const [projectsList, setProjects] = useState<Project[]>(projects);
-  const [skills, setSkills] = useState<SkillCategory[]>(skillCategories);
+  // Load from localStorage or fallback to defaults
+  const [blogs, setBlogs] = useState<BlogPost[]>(() => {
+    const saved = localStorage.getItem("blogs");
+    return saved ? JSON.parse(saved) : defaultBlogs;
+  });
 
-  // Save data to localStorage whenever it changes
+  const [projectsList, setProjects] = useState<Project[]>(() => {
+    const saved = localStorage.getItem("projects");
+    return saved ? JSON.parse(saved) : defaultProjects;
+  });
+
+  const [skills, setSkills] = useState<SkillCategory[]>(() => {
+    const saved = localStorage.getItem("skills");
+    return saved ? JSON.parse(saved) : defaultSkills;
+  });
+
+  // Save to localStorage whenever state changes
   useEffect(() => {
-    localStorage.setItem('blogs', JSON.stringify(blogs));
-    localStorage.setItem('projects', JSON.stringify(projectsList));
-    localStorage.setItem('skills', JSON.stringify(skills));
-  }, [blogs, projectsList, skills]);
+    localStorage.setItem("blogs", JSON.stringify(blogs));
+  }, [blogs]);
 
-  // Load data from localStorage on initial load
   useEffect(() => {
-    const savedBlogs = localStorage.getItem('blogs');
-    const savedProjects = localStorage.getItem('projects');
-    const savedSkills = localStorage.getItem('skills');
+    localStorage.setItem("projects", JSON.stringify(projectsList));
+  }, [projectsList]);
 
-    if (savedBlogs) setBlogs(JSON.parse(savedBlogs));
-    if (savedProjects) setProjects(JSON.parse(savedProjects));
-    if (savedSkills) setSkills(JSON.parse(savedSkills));
-  }, []);
+  useEffect(() => {
+    localStorage.setItem("skills", JSON.stringify(skills));
+  }, [skills]);
 
   return (
     <DataContext.Provider
@@ -57,7 +63,7 @@ export const DataProvider = ({ children }: { children: React.ReactNode }) => {
 export const useData = () => {
   const context = useContext(DataContext);
   if (context === undefined) {
-    throw new Error('useData must be used within a DataProvider');
+    throw new Error("useData must be used within a DataProvider");
   }
   return context;
 };

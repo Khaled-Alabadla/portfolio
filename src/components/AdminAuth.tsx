@@ -1,25 +1,32 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import { Label } from '@/components/ui/label';
-import { toast } from '@/hooks/use-toast';
+import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardFooter,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
+import { toast } from "@/hooks/use-toast";
 
 // These would normally be stored securely, not hardcoded
-const ADMIN_USERNAME = "khaled";
-const ADMIN_PASSWORD = "admin123";
+const ADMIN_USERNAME = "khaled-esam";
+const ADMIN_PASSWORD = "admin-kea";
 
 const AdminAuth = ({ children }: { children: React.ReactNode }) => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [authenticated, setAuthenticated] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
   // Check if user is already authenticated
   useEffect(() => {
-    const isAuthenticated = localStorage.getItem('adminAuthenticated') === 'true';
+    const isAuthenticated =
+      localStorage.getItem("adminAuthenticated") === "true";
     if (isAuthenticated) {
       setAuthenticated(true);
     }
@@ -27,9 +34,9 @@ const AdminAuth = ({ children }: { children: React.ReactNode }) => {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
-      localStorage.setItem('adminAuthenticated', 'true');
+      localStorage.setItem("adminAuthenticated", "true");
       setAuthenticated(true);
       toast({
         title: "Login successful",
@@ -54,7 +61,9 @@ const AdminAuth = ({ children }: { children: React.ReactNode }) => {
     <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 py-12 px-4 sm:px-6 lg:px-8">
       <Card className="w-full max-w-md">
         <CardHeader>
-          <CardTitle className="text-center text-2xl font-serif">Admin Login</CardTitle>
+          <CardTitle className="text-center text-2xl font-serif">
+            Admin Login
+          </CardTitle>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleLogin} className="space-y-4">
