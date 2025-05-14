@@ -1,7 +1,8 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
-import { blogPosts as defaultBlogs, BlogPost } from "@/data/blog";
-import { projects as defaultProjects, Project } from "@/data/projects";
-import { skillCategories as defaultSkills, SkillCategory } from "@/data/skills";
+import { BlogPost } from "@/data/blog";
+import { Project } from "@/data/projects";
+import { SkillCategory } from "@/data/skills";
+import { supabase } from "@/lib/supabaseClient"; // Make sure this file exists
 
 interface DataContextType {
   blogs: BlogPost[];
@@ -15,34 +16,27 @@ interface DataContextType {
 const DataContext = createContext<DataContextType | undefined>(undefined);
 
 export const DataProvider = ({ children }: { children: React.ReactNode }) => {
-  // Load from localStorage or fallback to defaults
-  const [blogs, setBlogs] = useState<BlogPost[]>(() => {
-    const saved = localStorage.getItem("blogs");
-    return saved ? JSON.parse(saved) : defaultBlogs;
-  });
-
-  const [projectsList, setProjects] = useState<Project[]>(() => {
-    const saved = localStorage.getItem("projects");
-    return saved ? JSON.parse(saved) : defaultProjects;
-  });
-
-  const [skills, setSkills] = useState<SkillCategory[]>(() => {
-    const saved = localStorage.getItem("skills");
-    return saved ? JSON.parse(saved) : defaultSkills;
-  });
-
-  // Save to localStorage whenever state changes
-  useEffect(() => {
-    localStorage.setItem("blogs", JSON.stringify(blogs));
-  }, [blogs]);
+  const [blogs, setBlogs] = useState<BlogPost[]>([]);
+  const [projectsList, setProjects] = useState<Project[]>([]);
+  const [skills, setSkills] = useState<SkillCategory[]>([]);
 
   useEffect(() => {
-    localStorage.setItem("projects", JSON.stringify(projectsList));
-  }, [projectsList]);
+    const fetchData = async () => {
+      // Load blogs if you plan to use Supabase for blogs too
+      // const { data: blogsData } = await supabase.from("blogs").select("*");
+      // if (blogsData) setBlogs(blogsData);
 
-  useEffect(() => {
-    localStorage.setItem("skills", JSON.stringify(skills));
-  }, [skills]);
+      const { data: projectsData } = await supabase
+        .from("projects")
+        .select("*");
+      if (projectsData) setProjects(projectsData);
+
+      const { data: skillsData } = await supabase.from("skills").select("*");
+      if (skillsData) setSkills(skillsData);
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <DataContext.Provider
