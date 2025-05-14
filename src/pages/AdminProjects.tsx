@@ -158,7 +158,7 @@ const AdminProjects = () => {
         <div className="container">
           <div className="mb-8 flex justify-between items-center">
             <h1 className="text-3xl font-serif font-semibold">
-              {t("manageBlogPosts")}
+              {t("manageProjects")}
             </h1>
             <div className="flex gap-4">
               <Button onClick={() => setIsAdding(true)}>
@@ -190,36 +190,33 @@ const AdminProjects = () => {
                     <TabsContent value="general">
                       <div className="space-y-4">
                         <div>
-                          <Label htmlFor="coverImage">
-                            {t("coverImageUrl")}
-                          </Label>
+                          <Label htmlFor="image">{t("projectImage")}</Label>
                           <Input
-                            id="coverImage"
-                            name="coverImage"
-                            value={formData.coverImage}
+                            id="image"
+                            name="image"
+                            value={formData.image}
                             onChange={handleInputChange}
                             required
                           />
                         </div>
+
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div>
-                            <Label htmlFor="date">Date</Label>
+                            <Label htmlFor="demoUrl">{t("demoUrl")}</Label>
                             <Input
-                              id="date"
-                              name="date"
-                              value={formData.date}
+                              id="demoUrl"
+                              name="demoUrl"
+                              value={formData.demoUrl || ""}
                               onChange={handleInputChange}
-                              required
                             />
                           </div>
                           <div>
-                            <Label htmlFor="readTime">Read Time</Label>
+                            <Label htmlFor="repoUrl">{t("repoUrl")}</Label>
                             <Input
-                              id="readTime"
-                              name="readTime"
-                              value={formData.readTime}
+                              id="repoUrl"
+                              name="repoUrl"
+                              value={formData.repoUrl || ""}
                               onChange={handleInputChange}
-                              required
                             />
                           </div>
                         </div>
@@ -229,7 +226,7 @@ const AdminProjects = () => {
                     <TabsContent value="english">
                       <div className="space-y-4">
                         <div>
-                          <Label htmlFor="title">{t("postTitle")}</Label>
+                          <Label htmlFor="title">{t("projectTitle")}</Label>
                           <Input
                             id="title"
                             name="title"
@@ -238,35 +235,28 @@ const AdminProjects = () => {
                             required
                           />
                         </div>
+
                         <div>
-                          <Label htmlFor="category">{t("category")}</Label>
+                          <Label htmlFor="description">
+                            {t("projectDesc")}
+                          </Label>
+                          <Textarea
+                            id="description"
+                            name="description"
+                            value={formData.description}
+                            onChange={handleInputChange}
+                            required
+                          />
+                        </div>
+
+                        <div>
+                          <Label htmlFor="tags">{t("tags")}</Label>
                           <Input
-                            id="category"
-                            name="category"
-                            value={formData.category}
+                            id="tags"
+                            name="tags"
+                            value={formData.tags.join(", ")}
                             onChange={handleInputChange}
                             required
-                          />
-                        </div>
-                        <div>
-                          <Label htmlFor="excerpt">{t("excerpt")}</Label>
-                          <Textarea
-                            id="excerpt"
-                            name="excerpt"
-                            value={formData.excerpt}
-                            onChange={handleInputChange}
-                            required
-                          />
-                        </div>
-                        <div>
-                          <Label htmlFor="content">{t("content")}</Label>
-                          <Textarea
-                            id="content"
-                            name="content"
-                            value={formData.content}
-                            onChange={handleInputChange}
-                            required
-                            className="h-64 font-mono"
                           />
                         </div>
                       </div>
@@ -275,47 +265,46 @@ const AdminProjects = () => {
                     <TabsContent value="arabic">
                       <div className="space-y-4">
                         <div>
-                          <Label htmlFor="title_ar">{t("postTitleAr")}</Label>
+                          <Label htmlFor="title_ar">
+                            {t("projectTitleAr")}
+                          </Label>
                           <Input
                             id="title_ar"
                             name="title_ar"
-                            value={formData.title_ar}
+                            value={formData.title_ar || ""}
                             onChange={handleInputChange}
                             dir="rtl"
                             className="font-arabic"
                           />
                         </div>
+
                         <div>
-                          <Label htmlFor="category_ar">{t("categoryAr")}</Label>
+                          <Label htmlFor="description_ar">
+                            {t("projectDescAr")}
+                          </Label>
+                          <Textarea
+                            id="description_ar"
+                            name="description_ar"
+                            value={formData.description_ar || ""}
+                            onChange={handleInputChange}
+                            dir="rtl"
+                            className="font-arabic"
+                          />
+                        </div>
+
+                        <div>
+                          <Label htmlFor="tags_ar">{t("tagsAr")}</Label>
                           <Input
-                            id="category_ar"
-                            name="category_ar"
-                            value={formData.category_ar}
+                            id="tags_ar"
+                            name="tags_ar"
+                            value={
+                              formData.tags_ar
+                                ? formData.tags_ar.join(", ")
+                                : ""
+                            }
                             onChange={handleInputChange}
                             dir="rtl"
                             className="font-arabic"
-                          />
-                        </div>
-                        <div>
-                          <Label htmlFor="excerpt_ar">{t("excerptAr")}</Label>
-                          <Textarea
-                            id="excerpt_ar"
-                            name="excerpt_ar"
-                            value={formData.excerpt_ar}
-                            onChange={handleInputChange}
-                            dir="rtl"
-                            className="font-arabic"
-                          />
-                        </div>
-                        <div>
-                          <Label htmlFor="content_ar">{t("contentAr")}</Label>
-                          <Textarea
-                            id="content_ar"
-                            name="content_ar"
-                            value={formData.content_ar}
-                            onChange={handleInputChange}
-                            dir="rtl"
-                            className="h-64 font-mono font-arabic"
                           />
                         </div>
                       </div>
@@ -344,38 +333,47 @@ const AdminProjects = () => {
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>{t("postTitle")}</TableHead>
-                  <TableHead>{t("category")}</TableHead>
-                  <TableHead>Date</TableHead>
+                  <TableHead>{t("projectTitle")}</TableHead>
+                  <TableHead>{t("tags")}</TableHead>
                   <TableHead className="w-[150px]">Actions</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {blogs.length === 0 ? (
+                {projects.length === 0 ? (
                   <TableRow>
-                    <TableCell colSpan={4} className="text-center">
+                    <TableCell colSpan={3} className="text-center">
                       {t("noPostsFound")}
                     </TableCell>
                   </TableRow>
                 ) : (
-                  blogs.map((post) => (
-                    <TableRow key={post.id}>
-                      <TableCell>{post.title}</TableCell>
-                      <TableCell>{post.category}</TableCell>
-                      <TableCell>{post.date}</TableCell>
+                  projects.map((project) => (
+                    <TableRow key={project.id}>
+                      <TableCell>{project.title}</TableCell>
+                      <TableCell>
+                        <div className="flex flex-wrap gap-1">
+                          {project.tags.map((tag, idx) => (
+                            <span
+                              key={idx}
+                              className="bg-secondary text-secondary-foreground text-xs px-2 py-1 rounded-full"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </TableCell>
                       <TableCell>
                         <div className="flex gap-2">
                           <Button
                             variant="outline"
                             size="sm"
-                            onClick={() => handleEditClick(post)}
+                            onClick={() => handleEditClick(project)}
                           >
                             {t("edit")}
                           </Button>
                           <Button
                             variant="destructive"
                             size="sm"
-                            onClick={() => handleDeleteClick(post.id)}
+                            onClick={() => handleDeleteClick(project.id)}
                           >
                             {t("delete")}
                           </Button>
