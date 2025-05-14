@@ -39,7 +39,9 @@ const About = () => {
               >
                 {t("myStory")}
               </h2>
-              <p className="text-muted-foreground mb-4">{t("aboutContent")}</p>
+              <p className="whitespace-pre-line text-muted-foreground mb-4">
+                {t("aboutContent")}
+              </p>
             </div>
           </div>
 
