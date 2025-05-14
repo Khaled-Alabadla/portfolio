@@ -16,10 +16,10 @@ export const translations = {
     admin: "Admin",
 
     // Hero section
-    heroTitle: "Hello, I'm ",
+    heroTitle: "Hello, I'm",
     heroName: " Khaled Esam",
     heroDesc:
-      "A software engineer who builds meaningful solutions — from dynamic web apps and e-commerce stores to custom business systems.",
+      "A Laravel and Vue.js developer who turns ideas into real, useful web solutions — from interactive apps and e-commerce sites to custom tools for businesses.",
     viewWork: "View My Work",
     getInTouch: "Get In Touch",
 
@@ -66,8 +66,20 @@ export const translations = {
 
     myStory: "My Story",
     workExperience: "Work Experience",
-    aboutContent:
-      "Khaled Esam Alabadla, a software engineer specializing in modern web development using Laravel and Vue.js. I’m based in Gaza, Palestine, and I graduated with a GPA of 93.63 in Software Engineering from the University of Palestine in 2025.\n\nOver the years, I’ve developed innovative solutions for a variety of projects. From e-commerce stores to advanced web applications, I’ve worked with large governmental institutions like the Municipal Council, gaining extensive experience in delivering flexible and high-performance software solutions. Additionally, I’m proficient in handling various databases and creating APIs for seamless system integration.\n\nMy skills include:\n\nBuilding modern web applications using Laravel and Vue.js.\nDeveloping high-performance e-commerce stores with exceptional user experience.\nHandling databases and executing advanced and complex queries.\nDeveloping and integrating APIs to connect systems and achieve interaction between applications.\nUtilizing modern programming techniques in web development.",
+    aboutContent: `Khaled Esam Alabadla, a software engineer specializing in modern web developmentusing Laravel and Vue.js.
+
+I’m living in Gaza, Palestine, and I graduated with a GPA of 93.66 in Software Engineering from the University of Palestine in 2025.
+
+Over the years, I’ve developed innovative solutions for a variety of projects, From e-commerce stores to advanced web applications, I’ve worked with large governmental institutions like the Al-Qarara Municipality, gaining extensive experience in delivering flexible and high-performance software solutions.
+
+Additionally, I’m proficient in handling various databases and creating APIs for seamless system integration.
+
+My skills include:
+-Building modern web applications using Laravel and Vue.js.
+-Developing high-performance e-commerce stores with exceptional user experience.
+-Handling databases and executing advanced and complex queries.
+-Developing and integrating APIs to connect systems and achieve interaction between applications.
+-Utilizing modern programming techniques in web development.`,
     education: "Education",
     // Skills section
     mySkills: "My Skills",
@@ -197,7 +209,7 @@ export const translations = {
     admin: "إدارة",
 
     // Hero section
-    heroTitle: " السلام عليكم، أنا",
+    heroTitle: "السلام عليكم، أنا",
     heroName: " خالد عصام",
     heroDesc:
       "مهندس برمجيات | مطور الواجهات الخلفية باستخدام PHP Laravel | مطور الواجهات الأمامية باستخدام Vue.js",
@@ -239,8 +251,20 @@ export const translations = {
     aboutMe: "من هو خالد؟",
     aboutDesc: "إليك نبذة مبسطة عني وعن خبرتي في مجال تطوير البرمجيات",
     myStory: "قصتي",
-    aboutContent:
-      "خالد عصام العبادلة، مهندس برمجيات متخصص في تطوير تطبيقات الويب الحديثة باستخدام Laravel و Vue.js. أعيش في غزة، فلسطين، وحاصل على درجة البكالوريوس في هندسة البرمجيات من جامعة فلسطين بتقدير 93.63،\n\nعلى مرّ سنواتي في مجال البرمجيات، قمت بتطوير حلول مبتكرة لمجموعة متنوعة من المشاريع. بدءًا من المتاجر الإلكترونية إلى التطبيقات الويب المتقدمة، عملت مع مؤسسات حكومية كبيرة مثل بلدية القراة، مما أكسبني خبرة واسعة في تقديم حلول برمجية مرنة وعالية الأداء. بالإضافة إلى ذلك، أتقن التعامل مع قواعد البيانات المختلفة وإنشاء APIs لتكامل الأنظمة بشكل مثالي.\n\nمهاراتي تشمل:\n\nبناء تطبيقات ويب حديثة باستخدام Laravel و Vue.js.\nتطوير متاجر إلكترونية ذات أداء عالٍ وتجربة مستخدم مميزة.\nالتعامل مع قواعد البيانات وتنفيذ استعلامات متقدمة ومعقدة.\nتطوير ودمج APIs لربط الأنظمة وتحقيق التفاعل بين التطبيقات.\nاستخدام تقنيات البرمجة الحديثة في تطوير المواقع.",
+    aboutContent: `خالد عصام العبادلة، مهندس برمجيات متخصص في تطوير تطبيقات الويب الحديثة باستخدام Laravel و Vue.js.
+
+       أعيش في غزة، فلسطين، وحاصل على درجة البكالوريوس في هندسة البرمجيات من جامعة فلسطين بتقدير 93.63،
+
+       على مرّ سنواتي في مجال البرمجيات، قمت بتطوير حلول مبتكرة لمجموعة متنوعة من المشاريع. بدءًا من المتاجر الإلكترونية إلى تطبيفات الويب المتقدمة، عملت مع مؤسسات حكومية كبيرة مثل بلدية القراة، مما أكسبني خبرة واسعة في تقديم حلول برمجية مرنة وعالية الأداء.
+       
+       بالإضافة إلى ذلك، أتقن التعامل مع قواعد البيانات المختلفة وإنشاء APIs لتكامل الأنظمة بشكل مثالي.
+       
+       مهاراتي تشمل:
+       -بناء تطبيقات ويب حديثة باستخدام Laravel و Vue.js.
+       -تطوير متاجر إلكترونية ذات أداء عالٍ وتجربة مستخدم مميزة.
+       -التعامل مع قواعد البيانات وتنفيذ استعلامات متقدمة ومعقدة.
+       -تطوير ودمج APIs لربط الأنظمة وتحقيق التفاعل بين التطبيقات.
+       -استخدام تقنيات البرمجة الحديثة في تطوير المواقع.`,
 
     workExperience: "الخبرة العملية",
     education: "التعليم",

@@ -44,18 +44,15 @@
     <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
     <script type="module" src="/src/main.tsx"></script>
     <script>
-      // Option 1: Detect language from <html lang="...">
-      const lang = document.documentElement.lang;
+      document.addEventListener("DOMContentLoaded", function () {
+        const dir = document.documentElement.getAttribute("dir");
 
-      // Option 2: Or detect browser language (optional)
-      // const lang = navigator.language.startsWith('ar') ? 'ar' : 'en';
-
-      // Set title based on language
-      if (lang === "ar") {
-        document.title = "خالد عصام - الملف الشخصي";
-      } else {
-        document.title = "Khaled Esam - Personal Portfolio & Blog";
-      }
+        if (dir === "rtl") {
+          document.title = "خالد عصام - الملف الشخصي";
+        } else {
+          document.title = "Khaled Esam - Personal Portfolio & Blog";
+        }
+      });
     </script>
   </body>
 </html>

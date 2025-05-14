@@ -1,14 +1,13 @@
-
-import React from 'react';
-import { Card, CardContent } from '@/components/ui/card';
-import { cn } from '@/lib/utils';
-import { useData } from '@/contexts/DataContext';
-import { useLanguage } from '@/contexts/LanguageContext';
+import React from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
+import { useData } from "@/contexts/DataContext";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const SkillBar = ({ level }: { level: number }) => {
   return (
     <div className="w-full bg-secondary h-2 rounded-full overflow-hidden">
-      <div 
+      <div
         className="bg-primary h-full rounded-full"
         style={{ width: `${level * 20}%` }}
       />
@@ -19,16 +18,24 @@ const SkillBar = ({ level }: { level: number }) => {
 const SkillsSection = () => {
   const { skills } = useData();
   const { t, language } = useLanguage();
-  
+
   return (
     <section className="py-16">
       <div className="container">
         <div className="max-w-3xl mx-auto mb-12 text-center">
-          <h2 className={`text-3xl font-serif font-semibold mb-4 ${language === 'ar' ? 'font-arabic' : ''}`}>
-            {t('mySkills')}
+          <h2
+            className={`text-3xl font-serif font-semibold mb-4 ${
+              language === "ar" ? "font-arabic" : ""
+            }`}
+          >
+            {t("mySkills")}
           </h2>
-          <p className={`text-muted-foreground ${language === 'ar' ? 'font-arabic' : ''}`}>
-            {t('skillsDesc')}
+          <p
+            className={`text-muted-foreground ${
+              language === "ar" ? "font-arabic" : ""
+            }`}
+          >
+            {t("skillsDesc")}
           </p>
         </div>
 
@@ -36,8 +43,14 @@ const SkillsSection = () => {
           {skills.map((category, index) => (
             <Card key={index} className="overflow-hidden">
               <div className="bg-primary text-primary-foreground p-4">
-                <h3 className={`text-xl font-serif font-semibold ${language === 'ar' ? 'font-arabic' : ''}`}>
-                  {language === 'ar' && category.name_ar ? category.name_ar : category.name}
+                <h3
+                  className={`text-xl font-serif font-semibold ${
+                    language === "ar" ? "font-arabic" : ""
+                  }`}
+                >
+                  {language === "ar" && category.name_ar
+                    ? category.name_ar
+                    : category.name}
                 </h3>
               </div>
               <CardContent className="pt-6">
@@ -45,14 +58,21 @@ const SkillsSection = () => {
                   {category.skills.map((skill, skillIndex) => (
                     <li key={skillIndex} className="space-y-1">
                       <div className="flex items-center justify-between">
-                        <span className={cn("font-medium", 
-                          skill.level > 3 ? "text-foreground" : "text-muted-foreground"
-                        )}>
-                          {language === 'ar' && skill.name_ar ? skill.name_ar : skill.name}
+                        <span
+                          className={cn(
+                            "font-medium",
+                            skill.level > 3
+                              ? "text-foreground"
+                              : "text-muted-foreground"
+                          )}
+                        >
+                          {language === "ar" && skill.name_ar
+                            ? skill.name_ar
+                            : skill.name}
                         </span>
-                        <span className="text-xs text-muted-foreground">
+                        {/* <span className="text-xs text-muted-foreground">
                           {skill.level}/5
-                        </span>
+                        </span> */}
                       </div>
                       <SkillBar level={skill.level} />
                     </li>

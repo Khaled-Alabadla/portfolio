@@ -13,7 +13,7 @@ const About = () => {
         <div className="container">
           <div className="max-w-3xl mx-auto mb-16 text-center">
             <h1
-              className={`text-4xl font-serif font-semibold mb-4${
+              className={`text-4xl font-serif font-semibold mb-4 ${
                 language === "ar" ? "font-arabic" : ""
               }`}
             >
@@ -140,7 +140,11 @@ const About = () => {
             <Card>
               <CardContent className="pt-6">
                 <div className="flex flex-col md:flex-row justify-between mb-2">
-                  <h3 className="text-xl font-serif font-semibold">
+                  <h3
+                    className={`text-xl font-serif font-semibold ${
+                      language === "ar" ? "font-arabic" : ""
+                    }`}
+                  >
                     {t("educationDegree")}
                   </h3>
                   <p
