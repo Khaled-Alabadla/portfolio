@@ -9,10 +9,10 @@ const Footer = () => {
   return (
     <footer className="bg-secondary py-10 mt-20">
       <div className="container">
-        <div class="py-12">
+        <div class="py-12 bg-background">
           <div class="container mx-auto px-4">
-            <div class="flex flex-col text-center gap-12 md:flex-row md:items-start md:text-left md:justify-center">
-              <div class="w-full md:w-1/3 mb-8">
+            <div class="flex flex-col md:flex-row justify-center items-start text-center md:text-center gap-12">
+              <div class="md:w-1/3 mb-8">
                 <h3 class="text-lg font-serif font-bold mb-4">Khaled Esam</h3>
                 <p class="text-muted-foreground">
                   A professional Laravel and Vue.js developer focused on
@@ -20,8 +20,8 @@ const Footer = () => {
                 </p>
               </div>
 
-              <div class="w-full md:w-1/3 mb-8">
-                <h4 class="text-base font-bold mb-4">Quick Links</h4>
+              <div class="md:w-1/3 mb-8">
+                <h4 class="text-base font-bold ">Quick Links</h4>
                 <ul class="space-y-2">
                   <li>
                     <a
@@ -66,9 +66,9 @@ const Footer = () => {
                 </ul>
               </div>
 
-              <div class="w-full md:w-1/3">
+              <div class="md:w-1/3">
                 <h4 class="text-base font-bold mb-4">Connect</h4>
-                <div class="flex justify-center md:justify-start space-x-4">
+                <div class="flex justify-center md:justify-center space-x-4">
                   <a
                     href="https://github.com/Khaled-Alabadla"
                     aria-label="GitHub"
@@ -85,19 +85,15 @@ const Footer = () => {
                       viewBox="0 0 24 24"
                     >
                       <path
-                        d="M9 19c-5 1.5-5-2.5-7-3m14 
-                6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 
-                6.44-1.54 6.44-7A5.44 5.44 0 0 0 
-                20 4.77 5.07 5.07 0 0 0 19.91 
-                1S18.73.65 16 2.48a13.38 13.38 0 
-                0 0-7 0C6.27.65 5.09 1 5.09 
-                1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 
-                0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 
+                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 
+                6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 
+                2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 
+                1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 
+                3.78c0 5.42 3.3 6.61 6.44 
                 7A3.37 3.37 0 0 0 9 18.13V22"
                       ></path>
                     </svg>
                   </a>
-
                   <a
                     href="https://www.linkedin.com/in/khaled-esam-06b475216"
                     aria-label="LinkedIn"
@@ -114,15 +110,14 @@ const Footer = () => {
                       viewBox="0 0 24 24"
                     >
                       <path
-                        d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 
-              0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 
-              0 1 6-6z"
+                        d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 
+              0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 
+              6-6z"
                       ></path>
                       <rect x="2" y="9" width="4" height="12"></rect>
                       <circle cx="4" cy="4" r="2"></circle>
                     </svg>
                   </a>
-
                 </div>
               </div>
             </div>
@@ -130,7 +125,9 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-border/40 mt-8 pt-8 text-center text-sm text-muted-foreground">
-          <p className={language === "ar" ? "font-arabic" : ""}>            © {currentYear} {t("developerName")}. {t("allRightsReserved")}
+          <p className={language === "ar" ? "font-arabic" : ""}>
+            {" "}
+            © {currentYear} {t("developerName")}. {t("allRightsReserved")}
           </p>
         </div>
       </div>
