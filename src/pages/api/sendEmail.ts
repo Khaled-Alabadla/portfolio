@@ -13,16 +13,10 @@ export default async function handler(
 
   try {
     const data = await resend.emails.send({
-      from: "khaledalabadla6666@gmail.com",
+      from: "onboarding@resend.dev",
       to: "kh.es.abadla@gmail.com",
-      subject: `New message from ${name}: ${subject}`,
-      reply_to: email,
-      html: `
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Subject:</strong> ${subject}</p>
-        <p><strong>Message:</strong><br/>${message}</p>
-      `,
+      subject: "Hello World",
+      html: "<p>Congrats on sending your <strong>first email</strong>!</p>",
     });
 
     res.status(200).json({ success: true });
