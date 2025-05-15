@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -44,6 +44,39 @@ const AdminBlog = () => {
     content_ar: "",
   });
 
+  // Fetch blogs from Supabase
+  const fetchBlogs = async () => {
+    const { data, error } = await supabase
+      .from("blogs")
+      .select("*")
+      .order("date", { ascending: false });
+    if (!error && data) {
+      setBlogs(data);
+    } else if (error) {
+      toast({
+        title: "Error",
+        description: error.message,
+        variant: "destructive",
+      });
+    }
+  };
+
+  useEffect(() => {
+    fetchBlogs();
+
+    // Subscribe to realtime changes in blogs table
+    const subscription = supabase
+      .from("blogs")
+      .on("*", () => {
+        fetchBlogs();
+      })
+      .subscribe();
+
+    return () => {
+      supabase.removeSubscription(subscription);
+    };
+  }, []);
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -62,15 +95,12 @@ const AdminBlog = () => {
         .eq("id", isEditing);
 
       if (!error) {
-        const updatedPosts = blogs.map((post) =>
-          post.id === isEditing ? { id: post.id, ...formData } : post
-        );
-        setBlogs(updatedPosts);
         toast({
           title: "Post Updated",
           description: "The blog post has been successfully updated.",
         });
         setIsEditing(null);
+        fetchBlogs();
       } else {
         toast({
           title: "Error",
@@ -85,15 +115,15 @@ const AdminBlog = () => {
         .select();
 
       if (!error && data && data.length > 0) {
-        setBlogs([...blogs, data[0]]);
         toast({
           title: "Post Created",
           description: "A new blog post has been created.",
         });
+        fetchBlogs();
       } else {
         toast({
           title: "Error",
-          description: error.message,
+          description: error?.message || "Failed to create post",
           variant: "destructive",
         });
       }
@@ -140,13 +170,12 @@ const AdminBlog = () => {
   const handleDeleteClick = async (id: string) => {
     const { error } = await supabase.from("blogs").delete().eq("id", id);
     if (!error) {
-      const updatedPosts = blogs.filter((post) => post.id !== id);
-      setBlogs(updatedPosts);
       toast({
         title: "Post Deleted",
         description: "The blog post has been successfully deleted.",
         variant: "destructive",
       });
+      fetchBlogs();
     } else {
       toast({
         title: "Error",
