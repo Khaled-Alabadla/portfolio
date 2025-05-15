@@ -13,7 +13,7 @@ export default async function handler(
 
   try {
     const data = await resend.emails.send({
-      from: "khaled-esam@gmail.com",
+      from: "test@gmail.com",
       to: "kh.es.abadla@gmail.com",
       subject: `New message from ${name}: ${subject}`,
       reply_to: email,
