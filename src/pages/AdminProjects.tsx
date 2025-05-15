@@ -26,8 +26,7 @@ const AdminProjects = () => {
   const { t } = useLanguage();
   const [isAdding, setIsAdding] = useState(false);
   const [isEditing, setIsEditing] = useState<string | null>(null);
-  const [formData, setFormData] = useState<Project>({
-    id: "",
+  const [formData, setFormData] = useState<Omit<Project, "id">>({
     title: "",
     title_ar: "",
     description: "",
@@ -87,9 +86,10 @@ const AdminProjects = () => {
         });
       }
     } else {
+      const { id, ...dataToInsert } = formData;
       const { data, error } = await supabase
         .from("projects")
-        .insert([{ ...formData }])
+        .insert([dataToInsert])
         .select();
       if (!error && data) {
         setProjects([...projects, data[0]]);
