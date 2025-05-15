@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
-import { Skill } from "@/data/skills";
+import { Skill, SkillCategory } from "@/data/skills";
 import { Link } from "react-router-dom";
 import { toast } from "@/hooks/use-toast";
 import {
@@ -27,9 +27,7 @@ import { supabase } from "@/lib/supabaseClient";
 
 const AdminSkills = () => {
   const { skills, setSkills } = useData();
-  const [selectedCategory, setSelectedCategory] = useState<string>(
-    skills[0]?.name || ""
-  );
+  const [selectedCategory, setSelectedCategory] = useState<string>("");
   const [isAddingCategory, setIsAddingCategory] = useState(false);
   const [isAddingSkill, setIsAddingSkill] = useState(false);
   const [isEditingSkill, setIsEditingSkill] = useState<string | null>(null);
@@ -43,6 +41,37 @@ const AdminSkills = () => {
     icon: "",
     level: 3,
   });
+
+  const fetchSkills = async () => {
+    const { data, error } = await supabase.from("skills").select();
+    if (!error && data) {
+      setSkills(data);
+      if (!selectedCategory && data.length > 0) {
+        setSelectedCategory(data[0].name);
+      }
+    } else if (error) {
+      toast({
+        title: "Error",
+        description: error.message,
+        variant: "destructive",
+      });
+    }
+  };
+
+  useEffect(() => {
+    fetchSkills();
+
+    const subscription = supabase
+      .from("skills")
+      .on("*", () => {
+        fetchSkills();
+      })
+      .subscribe();
+
+    return () => {
+      supabase.removeSubscription(subscription);
+    };
+  }, []);
 
   const handleCategoryChange = (e) => {
     setCategoryForm({ ...categoryForm, [e.target.name]: e.target.value });
@@ -71,8 +100,6 @@ const AdminSkills = () => {
       .insert([newCategory])
       .select();
     if (!error && data && data.length > 0) {
-      setSkills([...skills, data[0]]);
-      setSelectedCategory(data[0].name);
       toast({
         title: "Category Created",
         description: `The category "${data[0].name}" has been created.`,
@@ -99,17 +126,12 @@ const AdminSkills = () => {
         )
       : [...category.skills, skillForm];
 
-    const { data, error } = await supabase
+    const { error } = await supabase
       .from("skills")
       .update({ skills: updatedSkills })
-      .eq("id", category.id)
-      .select();
+      .eq("id", category.id);
 
-    if (!error && data) {
-      const updatedCategories = skills.map((cat) =>
-        cat.name === selectedCategory ? { ...cat, skills: updatedSkills } : cat
-      );
-      setSkills(updatedCategories);
+    if (!error) {
       toast({
         title: isEditingSkill ? "Skill Updated" : "Skill Added",
         description: `"${skillForm.name}" has been ${
@@ -142,17 +164,12 @@ const AdminSkills = () => {
     const updatedSkills = category.skills.filter(
       (skill) => skill.name !== skillName
     );
-    const { data, error } = await supabase
+    const { error } = await supabase
       .from("skills")
       .update({ skills: updatedSkills })
-      .eq("id", category.id)
-      .select();
+      .eq("id", category.id);
 
-    if (!error && data) {
-      const updatedCategories = skills.map((cat) =>
-        cat.name === selectedCategory ? { ...cat, skills: updatedSkills } : cat
-      );
-      setSkills(updatedCategories);
+    if (!error) {
       toast({
         title: "Skill Deleted",
         description: `"${skillName}" has been deleted.`,
@@ -176,9 +193,6 @@ const AdminSkills = () => {
       .delete()
       .eq("id", category.id);
     if (!error) {
-      const updated = skills.filter((cat) => cat.name !== categoryName);
-      setSkills(updated);
-      setSelectedCategory(updated[0]?.name || "");
       toast({
         title: "Category Deleted",
         description: `The category "${categoryName}" has been deleted.`,
