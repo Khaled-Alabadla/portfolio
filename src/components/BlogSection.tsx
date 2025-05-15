@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Card,
   CardContent,
@@ -8,13 +8,12 @@ import {
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
-import { useData } from "@/contexts/DataContext";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { supabase } from "@/lib/supabaseClient";
 
 const BlogPostCard = ({ post }) => {
   const { language } = useLanguage();
 
-  // Use localized content based on the selected language
   const title = language === "ar" && post.title_ar ? post.title_ar : post.title;
   const excerpt =
     language === "ar" && post.excerpt_ar ? post.excerpt_ar : post.excerpt;
@@ -55,7 +54,6 @@ const BlogPostCard = ({ post }) => {
         </p>
       </CardContent>
       <CardFooter className="flex justify-between items-center">
-        {/* <span className="text-sm text-muted-foreground">{post.readTime}</span> */}
         <Button variant="ghost" size="sm" asChild>
           <Link
             to={`/blog/${post.id}`}
@@ -70,8 +68,31 @@ const BlogPostCard = ({ post }) => {
 };
 
 const BlogSection = ({ limit = 0 }) => {
-  const { blogs } = useData();
   const { t, language } = useLanguage();
+  const [blogs, setBlogs] = useState([]);
+
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      const { data, error } = await supabase
+        .from("blogs")
+        .select("*")
+        .order("date", { ascending: false });
+      if (data) setBlogs(data);
+      else console.error("Error loading blogs:", error.message);
+    };
+
+    fetchBlogs();
+
+    const subscription = supabase
+      .from("blogs")
+      .on("*", () => fetchBlogs())
+      .subscribe();
+
+    return () => {
+      supabase.removeSubscription(subscription);
+    };
+  }, []);
+
   const displayPosts = limit > 0 ? blogs.slice(0, limit) : blogs;
 
   return (
