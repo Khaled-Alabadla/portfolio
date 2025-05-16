@@ -5,6 +5,11 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 import { useLanguage } from "@/contexts/LanguageContext";
+import emailjs from "@emailjs/browser";
+
+const SERVICE_ID = "service_36tl2kc";
+const TEMPLATE_ID = "template_yadk68n";
+const PUBLIC_KEY = "vPTxkKvBAm1Fg3utP";
 
 const ContactSection = () => {
   const { toast } = useToast();
@@ -17,23 +22,26 @@ const ContactSection = () => {
   });
   const [loading, setLoading] = React.useState(false);
 
-  const handleChange = (e) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
-    try {
-      const res = await fetch("/api/sendEmail", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      subject: formData.subject,
+      message: formData.message,
+    };
 
-      if (!res.ok) throw new Error("Email send failed");
+    try {
+      await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY);
 
       toast({
         title: t("messageSentTitle"),
