@@ -1,32 +1,23 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { Resend } from "resend";
 
-const resend = new Resend("re_btd998zv_GG6F8sWzWV7Jc5fCyNbbdXZP");
+const resend = new Resend(process.env.RESEND_API_KEY as string);
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  // Set CORS headers
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-
-  // Handle preflight (OPTIONS) request
-  if (req.method === "OPTIONS") {
-    return res.status(200).end();
-  }
-
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
   const { name, email, subject, message } = req.body;
+  console.log("Sending email with data:", { name, email, subject, message });
 
   try {
     await resend.emails.send({
       from: "onboarding@resend.dev",
-      to: "kh.es.abadla@gmail.com",
+      to: "kh.es.abadla@gmail.com", // ✅ Replace with your verified email
       subject: `New message from ${name}: ${subject}`,
       reply_to: email,
       html: `<p><strong>Name:</strong> ${name}</p>
@@ -36,6 +27,7 @@ export default async function handler(
 
     return res.status(200).json({ success: true });
   } catch (error) {
+    console.error("Email sending error:", error);
     return res.status(500).json({ error: "Failed to send email" });
   }
 }
