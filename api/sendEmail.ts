@@ -16,20 +16,16 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   try {
     await resend.emails.send({
-      from: "Your Name <your@verifieddomain.com>",
-      to: "kh.es.abadla@gmail.com",
-      subject: `Contact Form: ${subject}`,
+      from: "Your Name <you@yourdomain.com>",
+      to: "your@email.com",
+      subject: `New Contact: ${subject}`,
       reply_to: email,
-      html: `
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Message:</strong><br/>${message}</p>
-      `,
+      html: `<p><strong>Name:</strong> ${name}</p><p>${message}</p>`,
     });
 
     return res.status(200).json({ message: "Email sent successfully" });
   } catch (error) {
-    console.error("Email sending error:", error);
-    return res.status(500).json({ message: "Email failed to send" });
+    console.error("Resend error:", error);
+    return res.status(500).json({ message: "Failed to send email" });
   }
 }
