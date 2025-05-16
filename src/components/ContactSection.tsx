@@ -27,7 +27,7 @@ const ContactSection = () => {
     setLoading(true);
 
     try {
-      const res = await fetch("https://khaled-esam.vercel.app/api/sendEmail", {
+      const res = await fetch("/api/sendEmail", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
