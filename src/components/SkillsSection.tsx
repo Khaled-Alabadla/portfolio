@@ -74,7 +74,7 @@ const SkillsSection = () => {
                           {skill.level}/5
                         </span> */}
                       </div>
-                      <SkillBar level={skill.level} />
+                      {/* <SkillBar level={skill.level} /> */}
                     </li>
                   ))}
                 </ul>
