@@ -27,7 +27,7 @@ const ContactSection = () => {
     setLoading(true);
 
     try {
-      const res = await fetch("/api/sendEmail", {
+      const res = await fetch("https://khaled-esam.vercel.app/api/sendEmail", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -36,21 +36,21 @@ const ContactSection = () => {
       if (!res.ok) throw new Error("Email send failed");
 
       toast({
-        title: "Message sent!",
-        description: "Thank you for your message. I will get back to you soon.",
+        title: t("messageSentTitle"),
+        description: t("messageSentDescription"),
       });
+
       setFormData({ name: "", email: "", subject: "", message: "" });
     } catch (error) {
       toast({
-        title: "Error",
-        description: "There was a problem sending your message.",
+        title: t("errorTitle"),
+        description: t("errorSendingMessage"),
         variant: "destructive",
       });
     } finally {
       setLoading(false);
     }
   };
-  
 
   return (
     <section className="py-16">
