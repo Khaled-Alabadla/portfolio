@@ -125,7 +125,7 @@ const BlogSection = ({ limit = 0 }) => {
           <div className="mt-12 text-center">
             <Button asChild>
               <Link
-                to={`/blog/{post.id}`}
+                to={`/blog`}
                 className={language === "ar" ? "font-arabic" : ""}
               >
                 {t("readMore")}

@@ -10,9 +10,9 @@ const Footer = () => {
     <footer className="bg-secondary py-10 mt-20">
       <div className="container">
         <div>
-          <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-center items-start text-center md:text-center gap-12">
-              <div class="md:w-1/3 mb-8 sm:w-full">
+          <div className="container mx-auto px-4">
+            <div className="flex flex-col md:flex-row justify-center items-start text-center md:text-center gap-12">
+              <div className="md:w-1/3 mb-8 sm:w-full">
                 <h3
                   className={`text-lg font-serif font-bold mb-4 ${
                     language === "ar" ? "font-arabic" : ""
@@ -29,7 +29,7 @@ const Footer = () => {
                 </p>
               </div>
 
-              <div class="md:w-1/3 mb-8 sm:w-full">
+              <div className="md:w-1/3 mb-8 sm:w-full">
                 <h4
                   className={`text-base font-bold mb-4 ${
                     language === "ar" ? "font-arabic" : ""
@@ -37,7 +37,7 @@ const Footer = () => {
                 >
                   {t("quickLinks")}
                 </h4>{" "}
-                <ul class="space-y-2">
+                <ul className="space-y-2">
                   <li>
                     <Link
                       to="/"
@@ -91,7 +91,7 @@ const Footer = () => {
                 </ul>
               </div>
 
-              <div class="md:w-1/3 sm:w-full">
+              <div className="md:w-1/3 sm:w-full">
                 <h4
                   className={`text-base font-bold mb-4 ${
                     language === "ar" ? "font-arabic" : ""
@@ -99,20 +99,20 @@ const Footer = () => {
                 >
                   {t("connect")}
                 </h4>{" "}
-                <div class="flex justify-center md:justify-center space-x-4">
+                <div className="flex justify-center md:justify-center space-x-4">
                   <a
                     href="#"
                     aria-label="GitHub"
-                    class="text-muted-foreground hover:text-primary"
+                    className="text-muted-foreground hover:text-primary"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      class="h-6 w-6"
+                      className="h-6 w-6"
                       fill="none"
                       stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       viewBox="0 0 24 24"
                     >
                       <path
@@ -128,16 +128,16 @@ const Footer = () => {
                   <a
                     href="#"
                     aria-label="LinkedIn"
-                    class="text-muted-foreground hover:text-primary"
+                    className="text-muted-foreground hover:text-primary"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      class="h-6 w-6"
+                      className="h-6 w-6"
                       fill="none"
                       stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       viewBox="0 0 24 24"
                     >
                       <path

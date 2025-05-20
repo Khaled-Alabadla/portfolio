@@ -23,8 +23,8 @@ export const DataProvider = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     const fetchData = async () => {
       // Load blogs if you plan to use Supabase for blogs too
-      // const { data: blogsData } = await supabase.from("blogs").select("*");
-      // if (blogsData) setBlogs(blogsData);
+      const { data: blogsData } = await supabase.from("blogs").select("*");
+      if (blogsData) setBlogs(blogsData);
 
       const { data: projectsData } = await supabase
         .from("projects")
