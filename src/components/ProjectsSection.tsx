@@ -43,13 +43,13 @@ const ProjectCard = ({ project }) => {
         </h3>
       </CardHeader>
       <CardContent className="flex-grow">
-        <p
-          className={`text-muted-foreground mb-4 ${
+        <div
+          className={`text-muted-foreground mb-4 whitespace-pre-line ${
             language === "ar" ? "font-arabic" : ""
           }`}
         >
           {description}
-        </p>
+        </div>
         <div className="flex flex-wrap gap-2">
           {tags.map((tag, index) => (
             <Badge key={index} variant="secondary">
