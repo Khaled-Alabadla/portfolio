@@ -27,12 +27,13 @@ const ProjectCard = ({ project }) => {
 
   return (
     <Card className="overflow-hidden h-full flex flex-col">
-      <div className="aspect-video overflow-hidden">
+      <div className="relative aspect-video overflow-hidden">
         <img
           src={`${project.image}?auto=format&fit=crop&w=600&h=350`}
           alt={title}
           className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
         />
+        {/* Icon button overlay */}
         <button
           onClick={() => window.open(project.image, "_blank")}
           aria-label="Open image in new tab"
@@ -43,6 +44,7 @@ const ProjectCard = ({ project }) => {
           <FaExpandAlt size={18} />
         </button>
       </div>
+
       <CardHeader>
         <h3
           className={`text-xl font-serif font-semibold ${
