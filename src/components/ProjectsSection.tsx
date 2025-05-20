@@ -1,4 +1,5 @@
 import React from "react";
+import { FaExpandAlt } from "react-icons/fa"; // example icon from react-icons
 import {
   Card,
   CardContent,
@@ -32,6 +33,15 @@ const ProjectCard = ({ project }) => {
           alt={title}
           className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
         />
+        <button
+          onClick={() => window.open(project.image, "_blank")}
+          aria-label="Open image in new tab"
+          className="absolute top-2 right-2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition"
+          style={{ zIndex: 10 }}
+          type="button"
+        >
+          <FaExpandAlt size={18} />
+        </button>
       </div>
       <CardHeader>
         <h3
