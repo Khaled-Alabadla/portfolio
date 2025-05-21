@@ -126,7 +126,7 @@ const Footer = () => {
                     </svg>
                   </a>
                   <a
-                    href="#"
+                    href="https://www.linkedin.com/in/khaled-alabadla"
                     aria-label="LinkedIn"
                     className="text-muted-foreground hover:text-primary"
                   >
