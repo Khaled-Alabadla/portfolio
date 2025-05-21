@@ -7,6 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import ReactMarkdown from "react-markdown";
 import { useData } from "@/contexts/DataContext";
 import { useLanguage } from "@/contexts/LanguageContext";
+import remarkBreaks from "remark-breaks";
 
 const BlogPost = () => {
   const { id } = useParams();
@@ -121,7 +122,19 @@ const BlogPost = () => {
               language === "ar" ? "font-arabic rtl" : ""
             }`}
           >
-            <ReactMarkdown>{content}</ReactMarkdown>
+            <ReactMarkdown
+              components={{
+                h1: ({ children }) => (
+                  <h1 className="text-3xl font-bold mb-4">{children}</h1>
+                ),
+                h2: ({ children }) => (
+                  <h2 className="text-2xl font-semibold mb-4">{children}</h2>
+                ),
+                p: ({ children }) => <p className="mb-4">{children}</p>,
+              }}
+            >
+              {content}
+            </ReactMarkdown>
           </div>
 
           {relatedPosts.length > 0 && (
