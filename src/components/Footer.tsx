@@ -12,7 +12,7 @@ const Footer = () => {
         <div>
           <div className="container mx-auto px-4">
             <div className="flex flex-col md:flex-row justify-center items-start text-center md:text-center gap-12">
-              <div className="md:w-1/3 mb-8 sm:w-full">
+              <div className="w-full md:w-1/3 mb-8 sm:w-full">
                 <h3
                   className={`text-lg font-serif font-bold mb-4 ${
                     language === "ar" ? "font-arabic" : ""
@@ -29,7 +29,7 @@ const Footer = () => {
                 </p>
               </div>
 
-              <div className="md:w-1/3 mb-8 sm:w-full">
+              <div className="w-full md:w-1/3 mb-8 sm:w-full">
                 <h4
                   className={`text-base font-bold mb-4 ${
                     language === "ar" ? "font-arabic" : ""
@@ -91,7 +91,7 @@ const Footer = () => {
                 </ul>
               </div>
 
-              <div className="md:w-1/3 sm:w-full">
+              <div className="w-full md:w-1/3 sm:w-full">
                 <h4
                   className={`text-base font-bold mb-4 ${
                     language === "ar" ? "font-arabic" : ""
