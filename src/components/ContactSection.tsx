@@ -142,7 +142,7 @@ const ContactSection = () => {
                     </svg>
                   </a>
                   <a
-                    href="https://www.linkedin.com/in/khaled-esam-06b475216"
+                    href="https://www.linkedin.com/in/kh-es-abadla"
                     aria-label="LinkedIn"
                     className="text-muted-foreground hover:text-primary"
                   >
