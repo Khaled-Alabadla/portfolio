@@ -131,6 +131,15 @@ const BlogPost = () => {
                   <h2 className="text-2xl font-semibold mb-4">{children}</h2>
                 ),
                 p: ({ children }) => <p className="mb-4">{children}</p>,
+                ul: ({ children }) => (
+                  <ul className="list-none pl-6 mb-4">{children}</ul>
+                ),
+                ol: ({ children }) => (
+                  <ol className="list-decimal pl-6 mb-4">{children}</ol>
+                ),
+                strong: ({ children }) => (
+                  <strong className="font-semibold">{children}</strong>
+                ),
               }}
             >
               {content}
