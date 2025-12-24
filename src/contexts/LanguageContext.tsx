@@ -62,7 +62,7 @@ export const translations = {
     educationDegree: "Bachelor of Science in Software Engineering",
     educationDate: "2020 - 2025",
     educationUniversity: "University of Palestine - Palestine",
-    educationGPA: "93.66%",
+    educationGPA: "93.59%",
 
     myStory: "My Story",
     workExperience: "Work Experience",
@@ -272,7 +272,7 @@ My skills include:
     educationDegree: "درجة البكالوريوس في هندسة البرمجيات",
     educationDate: "2020 - 2025",
     educationUniversity: "جامعة فلسطين - فلسطين",
-    educationGPA: "93.66%",
+    educationGPA: "93.59%",
 
     // Skills section
     mySkills: "مهاراتي",
