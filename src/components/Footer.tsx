@@ -101,7 +101,7 @@ const Footer = () => {
                 </h4>{" "}
                 <div className="flex justify-center md:justify-center space-x-4">
                   <a
-                    href="#"
+                    href="https://github.com/Khaled-Alabadla"
                     aria-label="GitHub"
                     className="text-muted-foreground hover:text-primary"
                   >
