@@ -1,6 +1,5 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=PT+Serif:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=PT+Serif:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -81,7 +80,11 @@
 }
 
 .hero-gradient {
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.8) 0%, rgba(59, 130, 246, 0.8) 100%);
+  background: radial-gradient(
+    circle,
+    rgba(56, 189, 248, 0.8) 0%,
+    rgba(59, 130, 246, 0.8) 100%
+  );
 }
 
 .blog-card {
@@ -95,7 +98,7 @@
 
 /* Arabic font */
 .font-arabic {
-  font-family: 'Noto Kufi Arabic', sans-serif;
+  font-family: "Noto Kufi Arabic", sans-serif;
 }
 
 /* RTL specific adjustments */
@@ -111,3 +114,10 @@
   --tw-space-x-reverse: 1;
 }
 
+ol {
+  padding-left: 1.5rem;
+}
+
+ol li {
+  list-style-position: inside;
+}
