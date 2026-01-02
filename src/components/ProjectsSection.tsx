@@ -31,7 +31,7 @@ const ProjectCard = ({ project }) => {
         <img
           src={`${project.image}?auto=format&fit=crop&w=600&h=350`}
           alt={title}
-          className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+          className="w-full h-full object-contain transition-transform duration-500 hover:scale-105"
         />
         {/* Icon button overlay */}
         <button
